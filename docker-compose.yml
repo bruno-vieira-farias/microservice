@@ -28,9 +28,7 @@ services:
 
   usuario-service:
     container_name: usuario-service
-    image: brunovieirafarias/microservico-usuario
-    depends_on:
-      - usuario-service-db
+    image: brunovieirafarias/microservice-usuario-atlas
     restart: always
     ports:
       - "8085:8085"
@@ -40,8 +38,6 @@ services:
   nossagrana-ui:
     container_name: nossagrana-ui
     image: diegoclimaites/nossagrana-frontend
-    depends_on:
-      - usuario-service-db
     restart: always
     ports:
       - "8083:80"
