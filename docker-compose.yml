@@ -12,9 +12,6 @@ services:
 
   emprestimo-service:
     container_name: emprestimo-service
-#    build:
-#       context: ../microservice-emprestimo/emprestimo/
-#       dockerfile: Dockerfile
     image: brunovieirafarias/microservico-emprestimo
     depends_on:
       - emprestimo-service-db
@@ -29,38 +26,19 @@ services:
     networks:
       - nossagrana
 
-  usuario-service-db:
-    container_name: usuario-db
-    image: mongo:latest
-    command: mongod --port 27018
-    restart: always
-    ports:
-      - "27018:27018"
-    networks:
-      - nossagrana
-
   usuario-service:
     container_name: usuario-service
-    # build:
-    #   context: ./emprestimo
-    #   dockerfile: Dockerfile
     image: brunovieirafarias/microservico-usuario
     depends_on:
       - usuario-service-db
     restart: always
     ports:
       - "8085:8085"
-    environment: 
-      USUARIO_DB_HOST: usuario-service-db
-      USUARIO_DB_PORT: 27018
     networks:
       - nossagrana
 
   nossagrana-ui:
     container_name: nossagrana-ui
-    # build:
-    #   context: ../microservice-frontend/grana-nossa-frontend
-    #   dockerfile: Dockerfile
     image: diegoclimaites/nossagrana-frontend
     depends_on:
       - usuario-service-db
@@ -72,9 +50,6 @@ services:
 
   emailsender-service:
     container_name: emailsender-service
-    # build:
-    #   context: ./emprestimo
-    #   dockerfile: Dockerfile
     image: brunovieirafarias/microservico-emailsender
     restart: always
     ports:
