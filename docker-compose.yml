@@ -12,7 +12,7 @@ services:
 
   emprestimo-service:
     container_name: emprestimo-service
-    image: brunovieirafarias/microservico-emprestimo
+    image: brunovieirafarias/microservico-emprestimo-cloud-development:entrega-trabalho-fiap-cloud-development
     depends_on:
       - emprestimo-service-db
     restart: always
@@ -28,7 +28,7 @@ services:
 
   usuario-service:
     container_name: usuario-service
-    image: brunovieirafarias/microservice-usuario-atlas
+    image: brunovieirafarias/microservico-usuario-cloud-development:entrega-trabalho-fiap-cloud-development
     restart: always
     ports:
       - "8085:8085"
@@ -37,7 +37,7 @@ services:
 
   nossagrana-ui:
     container_name: nossagrana-ui
-    image: diegoclimaites/nossagrana-frontend
+    image: brunovieirafarias/microservico-frontend-cloud-development:entrega-trabalho-fiap-cloud-development
     restart: always
     ports:
       - "8083:80"
@@ -46,7 +46,7 @@ services:
 
   emailsender-service:
     container_name: emailsender-service
-    image: brunovieirafarias/microservico-emailsender
+    image: brunovieirafarias/microservico-mail-sender-cloud-development:entrega-trabalho-fiap-cloud-development
     restart: always
     ports:
       - "8082:8082"
